@@ -40,7 +40,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>云幕国际运营管理平台</title>
+    <title>世纪欧辰运营管理平台</title>
     <%@ include file="/static/commons/common.jspf"%>
 
 </head>
@@ -51,7 +51,7 @@
         <div class="login-text fl">
             <h1 class="login-logo"></h1>
             <p class="mt20 fz30">互联网智慧运营专家</p>
-            <p class="text-large mt20">云幕国际管理平台</p>
+            <p class="text-large mt20">世纪欧辰管理平台</p>
             <p class="mt20 fz30">全面助力酒店公寓时代</p>
         </div>
         <div class="login-input fr">
@@ -82,7 +82,7 @@
 
 <div class="company-info">
     <p class="telphone">业务咨询热线151-1797-3890，周一 至 周日 09:30-18:00</p>
-    <p class="mt20">Copyright &copy; 重庆云幕国际 All rights reserved. 渝ICP备16008734号</p>
+    <p class="mt20">Copyright &copy; 重庆世纪欧辰 All rights reserved. 渝ICP备16008734号</p>
 </div>
 
 <script>

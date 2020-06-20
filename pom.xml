@@ -8,10 +8,10 @@
 		<version>2.1.5.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.yunmu</groupId>
-	<artifactId>yunmu_internal</artifactId>
+	<groupId>com.ouchen</groupId>
+	<artifactId>ouchen_internal</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>yunmu_internal</name>
+	<name>ouchen_internal</name>
 	<packaging>war</packaging>
 
 	<properties>
@@ -295,7 +295,7 @@
 			<!--</dependencies>-->
 			<!--</plugin>-->
 		</plugins>
-		<finalName>yunmu</finalName>
+		<finalName>ouchen</finalName>
 	</build>
 
 </project>

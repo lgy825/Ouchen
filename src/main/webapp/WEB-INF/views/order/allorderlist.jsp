@@ -48,7 +48,13 @@
                     </div>
                 </td>
                 <td>
-                    <div>{{:orderCount}}</div>
+                    <div>
+                        {{if orderCount == 0}}
+                                钟点房
+                        {{else}}
+                               {{:orderCount}}
+                        {{/if}}
+                    </div>
                 </td>
                 <td>
                     <div>{{:sourceWay}}</div>
@@ -93,21 +99,21 @@
                 <td>
                     <div class="">
                         <shiro:hasPermission name="ordermana:order:detail">
-                        <a href="${ctx}/order/tolook?id={{:id}}">
-                            <input type="button" class="lookbtn gray_btn mr10" value="订单详情">
-                        </a>
-                        </shiro:hasPermission>
+        <a href="${ctx}/order/tolook?id={{:id}}">
+        <input type="button" class="lookbtn gray_btn mr10" value="订单详情">
+        </a>
+    </shiro:hasPermission>
                         <shiro:hasPermission name="ordermana:order:edit">
-                        <a href="${ctx}/order/toedit?id={{:id}}">
-                            <input type="button" class="editbtn gray_btn mr10" value="编辑">
-                        </a>
-                        </shiro:hasPermission>
+        <a href="${ctx}/order/toedit?id={{:id}}">
+        <input type="button" class="editbtn gray_btn mr10" value="编辑">
+        </a>
+    </shiro:hasPermission>
                         <shiro:hasPermission name="ordermana:order:del">
-                        <input type="button" class="delete gray_btn mr10" data-sid="{{:id}}" value="删除">
-                        </shiro:hasPermission>
+        <input type="button" class="delete gray_btn mr10" data-sid="{{:id}}" value="删除">
+    </shiro:hasPermission>
                         <shiro:hasPermission name="ordermana:order:status">
-                            <input type="button" data-sid="{{:id}}"  class="editStatus gray_btn mt12 mr10" value="编辑状态">
-                        </shiro:hasPermission>
+        <input type="button" data-sid="{{:id}}"  class="editStatus gray_btn mt12 mr10" value="编辑状态">
+    </shiro:hasPermission>
                     </div>
                 </td>
             </tr>
@@ -124,9 +130,9 @@
         </div>
         <div class="pdtrl20">
             <shiro:hasPermission name="ordermana:order:add">
-            <a href="${ctx}/order/toaddOrder">
-                <input type="button" class="blue_btn" value="新建订单">
-            </a>
+                <a href="${ctx}/order/toaddOrder">
+                    <input type="button" class="blue_btn" value="新建订单">
+                </a>
             </shiro:hasPermission>
             <a href="" class="none">
                 <input type="button" class="gray_btn ml20" value="功能介绍">
@@ -148,7 +154,7 @@
                     <input id="searchBtn" type="button" class="blue_btn ml20" value="查询">
                     <input id="resetBtn" type="button" class="blue_btn ml20" value="重置">
                     <shiro:hasPermission name="ordermana:order:export">
-                    <input id="exportBtn" type="button" class="blue_btn ml20" value="导出订单">
+                        <input id="exportBtn" type="button" class="blue_btn ml20" value="导出订单">
                     </shiro:hasPermission>
                 </div>
             </form>

@@ -1,12 +1,12 @@
 $(function(){
-   loadProject();
-   loadPage();
+    loadProject();
+    loadPage();
 
 
     //加载项目
     function loadProject() {
         $.ajax({
-            url: ctx + "project/getpage",
+            url: ctx + "project/getProjectShiro",
             type: "GET",
             cache: false,
             async: false,
@@ -20,7 +20,7 @@ $(function(){
                     // // 城市列表
                     $("#projectSel").select2({placeholder: '请选择所属项目'});
                     $("#projectSel").append("<option value='-1'>*所属项目*</option>");
-                    $(data.resultData.list).each(function (idx, pro) {
+                    $(data.resultData).each(function (idx, pro) {
                         $("#projectSel").append("<option value='" + pro.id + "'>" + pro.projectName + "</option>");
                     });
                 }else {
@@ -77,28 +77,28 @@ $(function(){
         var contractId = $(this).data("sid");
         layer.confirm('删除后将无法恢复，是否继续？', function () {
             $.ajax({
-                       url: ctx + "contract/delete",
-                       type: "GET",
-                       cache: false,
-                       // async: false,
-                       dataType: 'json',
-                       data: {id: contractId},
-                       success: function (data) {
-                           if (data && data.resultCode === '0') {
-                               layer.msg('删除成功 !');
-                               loadPage();
-                           } else {
-                               if (data.resultDesc) {
-                                   layer.msg(data.resultDesc);
-                               } else {
-                                   layer.msg('删除失败 !');
-                               }
-                           }
-                       },
-                       error: function () {
-                           layer.msg('删除失败 !');
-                       }
-                   });
+                url: ctx + "contract/delete",
+                type: "GET",
+                cache: false,
+                // async: false,
+                dataType: 'json',
+                data: {id: contractId},
+                success: function (data) {
+                    if (data && data.resultCode === '0') {
+                        layer.msg('删除成功 !');
+                        loadPage();
+                    } else {
+                        if (data.resultDesc) {
+                            layer.msg(data.resultDesc);
+                        } else {
+                            layer.msg('删除失败 !');
+                        }
+                    }
+                },
+                error: function () {
+                    layer.msg('删除失败 !');
+                }
+            });
         });
     });
 

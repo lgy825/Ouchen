@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>云幕国际运营管理平台</title>
+    <title>世纪欧辰运营管理平台</title>
     <%@ include file="/static/commons/common.jspf" %>
     <style>
         .layui-layer {
@@ -21,8 +21,8 @@
     <!-- 顶部固定 -->
     <div class="header-wrap clearfix">
         <div class="header-fixed">
-            <h1 class="logo fl">云幕国际管理平台</h1>
-            <div class="fl head-title">云幕国际管理平台</div>
+            <h1 class="logo fl">世纪欧辰管理平台</h1>
+            <div class="fl head-title">世纪欧辰管理平台</div>
             <div class="login fr">
                 <div class="login-user fl"><shiro:principal property="userName"/>，欢迎您！</div>
                 <div class="modify-psd fl" onclick="showPassWord()"><span class="pas-text">修改密码</span></div>

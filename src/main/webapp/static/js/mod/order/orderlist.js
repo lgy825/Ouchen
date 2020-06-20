@@ -9,7 +9,7 @@ $(function(){
     //加载项目
     function loadProject() {
         $.ajax({
-            url: ctx + "project/getpage",
+            url: ctx + "project/getProjectShiro",
             type: "GET",
             cache: false,
             async: false,
@@ -23,7 +23,7 @@ $(function(){
                     // // 城市列表
                     $("#projectSel").select2({placeholder: '请选择所属项目'});
                     $("#projectSel").append("<option value='-1'>*所属项目*</option>");
-                    $(data.resultData.list).each(function (idx, pro) {
+                    $(data.resultData).each(function (idx, pro) {
                         $("#projectSel").append("<option value='" + pro.id + "'>" + pro.projectName + "</option>");
                     });
 
@@ -186,20 +186,23 @@ $(function(){
         var hourseNumber=$("#hourseNumber").val();
         var beginTime=$("#timeSpick").val();
         var endTime =$("#timeEpick").val();
+        var projectId=$("#projectSel").val() == -1 ? null : $("#projectSel").val();
+        var orderStatus=$("#orderStatus").val() == -1 ? null : $("#orderStatus").val();
+
         if ($.trim(hourseNumber)=='' || $.trim(hourseNumber)==null) {
             layer.msg("请至少输入房间号再导出");
             return;
         }
         if (beginTime.length < 1 || endTime.length < 1) {
             layer.confirm('您没有选择导出起止时间，是否继续？', function () {
-                location.href = ctx + "order/exportOrder?hourseNumber="+hourseNumber+"&beginTime="+beginTime+"&endTime="+endTime;
+                location.href = ctx + "order/exportOrder?hourseNumber="+hourseNumber+"&beginTime="+beginTime+"&orderStatus="+orderStatus+"&projectId="+projectId;
             });
         } else {
             if (Date.parse(beginTime) > Date.parse(endTime)) {
                 layer.msg("结束日期不能早于开始日期");
                 return;
             }
-            location.href = ctx + "order/exportOrder?hourseNumber="+hourseNumber+"&beginTime="+beginTime+"&endTime="+endTime;
+            location.href = ctx + "order/exportOrder?hourseNumber="+hourseNumber+"&beginTime="+beginTime+"&endTime="+endTime+"&orderStatus="+orderStatus+"&projectId="+projectId;
         }
     });
 
@@ -248,6 +251,7 @@ function loadCollectData(){
         // async: false,
         dataType: 'json',
         data:{
+            projectId:$("#projectSel").val() == -1 ? null : $("#projectSel").val(),
             orderId: $.trim($("#orderId").val()),
             beginTime:$("#timeSpick").val(),
             hourseNumber:$.trim($("#hourseNumber").val()),

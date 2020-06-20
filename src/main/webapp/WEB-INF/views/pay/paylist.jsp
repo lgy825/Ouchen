@@ -50,11 +50,11 @@
                 <td>
                     <div class="">
                         <shiro:hasPermission name="paymana:pay:edit">
-                        <input type="button" onclick="editType('{{:payId}}','{{:projectId}}','{{:payName}}','{{:payType}}','{{:payDesc}}','{{:payAmount}}')" class="edit gray_btn mr10" value="编辑">
-                        </shiro:hasPermission>
+        <input type="button" onclick="editType('{{:payId}}','{{:projectId}}','{{:payName}}','{{:payType}}','{{:payDesc}}','{{:payAmount}}')" class="edit gray_btn mr10" value="编辑">
+    </shiro:hasPermission>
                         <shiro:hasPermission name="paymana:pay:del">
-                        <input type="button"  onclick="deletePay('{{:payId}}')" class="gray_btn" value="删除">
-                        </shiro:hasPermission>
+        <input type="button"  onclick="deletePay('{{:payId}}')" class="gray_btn" value="删除">
+    </shiro:hasPermission>
                     </div>
                 </td>
             </tr>
@@ -87,7 +87,7 @@
         </div>
         <div class="ml20 mb10">
             <shiro:hasPermission name="paymana:pay:add">
-            <input type="button" class="blue_btn add-btn" value="新增支出">
+                <input type="button" class="blue_btn add-btn" value="新增支出">
             </shiro:hasPermission>
         </div>
         <div class="sell-add">
@@ -189,42 +189,42 @@
         }
         function loadProject() {
             $.ajax({
-                       url: ctx + "project/getpage",
-                       type: "GET",
-                       cache: false,
-                       async: false,
-                       dataType: 'json',
-                       data: {
-                           pageIndex: 1,
-                           pageSize: 99999
-                       },
-                       success: function (data) {
-                           if (data && data.resultCode === '0') {
-                               // // 城市列表
-                               $("#projectSel").select2({placeholder: '请选择所属项目'});
-                               $("#projectSel").append("<option value='-1'>*所属项目*</option>");
-                               $(data.resultData.list).each(function (idx, pro) {
-                                   $("#projectSel").append("<option value='" + pro.id + "'>" + pro.projectName + "</option>");
-                               });
+                url: ctx + "project/getProjectShiro",
+                type: "GET",
+                cache: false,
+                async: false,
+                dataType: 'json',
+                data: {
+                    pageIndex: 1,
+                    pageSize: 99999
+                },
+                success: function (data) {
+                    if (data && data.resultCode === '0') {
+                        // // 城市列表
+                        $("#projectSel").select2({placeholder: '请选择所属项目'});
+                        $("#projectSel").append("<option value='-1'>*所属项目*</option>");
+                        $(data.resultData).each(function (idx, pro) {
+                            $("#projectSel").append("<option value='" + pro.id + "'>" + pro.projectName + "</option>");
+                        });
 
-                               // // 城市列表
-                               $("#projectSels").select2({placeholder: '请选择所属项目'});
-                               $("#projectSels").append("<option value='-1'>*所属项目*</option>");
-                               $(data.resultData.list).each(function (idx, pro) {
-                                   $("#projectSels").append("<option value='" + pro.id + "'>" + pro.projectName + "</option>");
-                               });
-                           }else {
-                               if (data.resultDesc) {
-                                   layer.msg(data.resultDesc);
-                               } else {
-                                   layer.msg('查询失败 !');
-                               }
-                           }
-                       },
-                       error: function () {
-                           layer.msg('查询失败 !');
-                       }
-                   });
+                        // // 城市列表
+                        $("#projectSels").select2({placeholder: '请选择所属项目'});
+                        $("#projectSels").append("<option value='-1'>*所属项目*</option>");
+                        $(data.resultData).each(function (idx, pro) {
+                            $("#projectSels").append("<option value='" + pro.id + "'>" + pro.projectName + "</option>");
+                        });
+                    }else {
+                        if (data.resultDesc) {
+                            layer.msg(data.resultDesc);
+                        } else {
+                            layer.msg('查询失败 !');
+                        }
+                    }
+                },
+                error: function () {
+                    layer.msg('查询失败 !');
+                }
+            });
         }
 
         // 控制模态框

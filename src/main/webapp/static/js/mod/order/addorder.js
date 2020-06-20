@@ -20,10 +20,10 @@ $(function () {
         $('.times').each(function () {
             $(this).datetimepicker('destroy');
             $(this).datetimepicker({
-                                       format: 'H:i',
-                                       step: 1,
-                                       datepicker: false
-                                   });
+                format: 'H:i',
+                step: 1,
+                datepicker: false
+            });
         });
     }
 
@@ -52,16 +52,16 @@ $(function () {
     });
 
     var timeComplete = $("#timeComplete").datetimepicker({
-                                                       format: 'Y-m-d',
-                                                       // minDate: 0,
-                                                       // onChangeDateTime: function (curDate) {
-                                                       //     var curDateTime = curDate.sformat("yyyy-MM-dd");
-                                                       //     $("#timeEpick").datetimepicker({
-                                                       //         minDate: curDateTime ? curDateTime : false
-                                                       //     });
-                                                       // },
-                                                       timepicker: false
-                                                   });
+        format: 'Y-m-d',
+        // minDate: 0,
+        // onChangeDateTime: function (curDate) {
+        //     var curDateTime = curDate.sformat("yyyy-MM-dd");
+        //     $("#timeEpick").datetimepicker({
+        //         minDate: curDateTime ? curDateTime : false
+        //     });
+        // },
+        timepicker: false
+    });
 
     loadPay();
     loadProduct();
@@ -276,40 +276,40 @@ $(function () {
     }
 
     function loadOrderSource() {
-            $.ajax({
-                url: ctx + "order/getOrdeSourceAll",
-                type: "GET",
-                cache: false,
-                async: false,
-                dataType: 'json',
-                success: function (data) {
-                    if (data && data.resultCode === '0') {
-                        //
-                        $("#sourceSel").select2({placeholder: '*选择订单来源*'});
-                        $("#sourceSel").append("<option value='-1'>*选择订单来源*</option>");
-                        $(data.resultData).each(function (idx, item) {
-                            $("#sourceSel").append("<option value='" + item.id + "'>" + item.name + "</option>");
-                        });
+        $.ajax({
+            url: ctx + "order/getOrdeSourceAll",
+            type: "GET",
+            cache: false,
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                if (data && data.resultCode === '0') {
+                    //
+                    $("#sourceSel").select2({placeholder: '*选择订单来源*'});
+                    $("#sourceSel").append("<option value='-1'>*选择订单来源*</option>");
+                    $(data.resultData).each(function (idx, item) {
+                        $("#sourceSel").append("<option value='" + item.id + "'>" + item.name + "</option>");
+                    });
 
+                } else {
+                    if (data.resultDesc) {
+                        layer.msg(data.resultDesc);
                     } else {
-                        if (data.resultDesc) {
-                            layer.msg(data.resultDesc);
-                        } else {
-                            layer.msg('查询失败 !');
-                        }
+                        layer.msg('查询失败 !');
                     }
-                },
-                error: function () {
-                    layer.msg('查询失败 !');
                 }
-            });
+            },
+            error: function () {
+                layer.msg('查询失败 !');
+            }
+        });
 
 
     }
 
     function loadProject() {
         $.ajax({
-            url: ctx + "project/getpage",
+            url: ctx + "project/getProjectShiro",
             type: "GET",
             cache: false,
             async: false,
@@ -323,7 +323,7 @@ $(function () {
                     // // 城市列表
                     $("#projectSel").select2({placeholder: '请选择所属项目'});
                     $("#projectSel").append("<option value='-1'>*所属项目*</option>");
-                    $(data.resultData.list).each(function (idx, pro) {
+                    $(data.resultData).each(function (idx, pro) {
                         $("#projectSel").append("<option value='" + pro.id + "'>" + pro.projectName + "</option>");
                     });
 

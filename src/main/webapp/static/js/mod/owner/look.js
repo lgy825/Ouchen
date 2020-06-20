@@ -2,7 +2,7 @@ $(function () {
     loadProject();
     function loadProject() {
         $.ajax({
-            url: ctx + "project/getpage",
+            url: ctx + "project/getProjectShiro",
             type: "GET",
             cache: false,
             async: false,
@@ -16,7 +16,7 @@ $(function () {
                     // // 城市列表
                     $("#projectSel").select2({placeholder: '请选择所属项目'});
                     $("#projectSel").append("<option value='-1'>*所属项目*</option>");
-                    $(data.resultData.list).each(function (idx, pro) {
+                    $(data.resultData).each(function (idx, pro) {
                         $("#projectSel").append("<option value='" + pro.id + "'>" + pro.projectName + "</option>");
                     });
 
